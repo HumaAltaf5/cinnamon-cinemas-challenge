@@ -3,7 +3,7 @@ package com.huma.cinnamon;
 import java.util.ArrayList;
 
 public class BookingSystem {
-    private int seatCounter = 0;
+    private int seatCounter = 15;
     private ArrayList seatList;
     private int counterA1 = 1;
     private int counterB1 = 1;
@@ -15,14 +15,20 @@ public class BookingSystem {
 
     public void allocateSeats(int seats) {
         for (int i = 0; i < seats; i ++) {
-            if(seatCounter < 5) {
+            if(seatCounter > 10) {
                 seatList.add("A" + counterA1);
-                seatCounter++;
+                seatCounter--;
                 counterA1++;
-            } else if (seatCounter >= 5 && seatCounter < 10) {
-                seatList.add("B" + counterA1);
-                seatCounter++;
+            } else if (seatCounter > 5) {
+                seatList.add("B" + counterB1);
+                seatCounter--;
                 counterB1++;
+            } else if (seatCounter > 0) {
+                seatList.add("C" + counterC1);
+                seatCounter--;
+                counterC1++;
+            } else {
+                System.out.println("Could not book all seats, only " + i + "seats booked");
             }
         }
     }

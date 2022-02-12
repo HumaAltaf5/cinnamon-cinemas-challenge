@@ -2,8 +2,9 @@ package com.huma.cinnamon;
 
 import org.testng.annotations.Test;
 
+import java.sql.Array;
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static org.testng.AssertJUnit.assertEquals;
@@ -72,5 +73,21 @@ public class AllocateSeatsTest {
         BookingManager manager = new BookingManager(cinnamon);
         manager.requestSeatBooking(randomNumber);
         assertEquals(expectedList, manager.viewAllocatedSeats());
+    }
+
+    @Test
+    public void testToAllocateAll15SeatsRandomly() {
+        CinnamonTheatre cinnamon = new CinnamonTheatre();
+        String[] arr = new String[]{"A1, A2, A3"};
+        ArrayList<String> expectedList = new ArrayList(15);
+        expectedList.add("A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3, C4, C5");
+        BookingManager manager = new BookingManager(cinnamon);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(2);
+        manager.requestSeatBooking(1);
+        assertEquals(expectedList.toString(), manager.viewAllocatedSeats().toString());
     }
 }
