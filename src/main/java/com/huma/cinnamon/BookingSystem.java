@@ -19,6 +19,10 @@ public class BookingSystem {
                 seatList.add("A" + counterA1);
                 seatCounter++;
                 counterA1++;
+            } else if (seatCounter >= 5 && seatCounter < 10) {
+                seatList.add("B" + counterA1);
+                seatCounter++;
+                counterB1++;
             }
         }
     }
