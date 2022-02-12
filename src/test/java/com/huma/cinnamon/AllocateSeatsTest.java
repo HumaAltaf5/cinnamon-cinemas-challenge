@@ -29,4 +29,16 @@ public class AllocateSeatsTest {
         assertEquals(expectedList, manager.viewAllocatedSeats());
     }
 
+    @Test
+    public void testToAllocateTwoSeats() {
+        CinnamonTheatre cinnamon = new CinnamonTheatre();
+        ArrayList<String> expectedList = new ArrayList<>();
+        expectedList.add("A1");
+        expectedList.add("A2");
+        BookingManager manager = new BookingManager(cinnamon);
+        manager.requestSeatBooking(2);
+        assertEquals(expectedList, manager.viewAllocatedSeats());
+    }
+
+
 }

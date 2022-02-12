@@ -3,8 +3,11 @@ package com.huma.cinnamon;
 import java.util.ArrayList;
 
 public class BookingSystem {
-    private int seatCounter = 15;
+    private int seatCounter = 0;
     private ArrayList seatList;
+    private int counterA1 = 1;
+    private int counterB1 = 1;
+    private int counterC1 = 1;
 
     public BookingSystem(int capacity) {
         seatList = new ArrayList(capacity);
@@ -12,8 +15,11 @@ public class BookingSystem {
 
     public void allocateSeats(int seats) {
         for (int i = 0; i < seats; i ++) {
-            seatList.add("A1");
-            seatCounter --;
+            if(seatCounter < 5) {
+                seatList.add("A" + counterA1);
+                seatCounter++;
+                counterA1++;
+            }
         }
     }
 
