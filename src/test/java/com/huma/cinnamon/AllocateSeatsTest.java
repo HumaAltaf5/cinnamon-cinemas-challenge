@@ -89,4 +89,22 @@ public class AllocateSeatsTest {
         manager.requestSeatBooking(1);
         assertEquals(expectedList.toString(), manager.viewAllocatedSeats().toString());
     }
+
+    @Test
+    // test to check if seats are allocated only as per capacity and customer is notified accordingly
+    // ie. Could not book all seats, only 1 seat(s) booked
+    public void testToCheckIfNoSeatsLeftDuringAllocation() {
+        CinnamonTheatre cinnamon = new CinnamonTheatre();
+        ArrayList<String> expectedList = new ArrayList(15);
+        expectedList.add("A1, A2, A3, A4, A5, B1, B2, B3, B4, B5, C1, C2, C3, C4, C5");
+        BookingManager manager = new BookingManager(cinnamon);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(3);
+        manager.requestSeatBooking(2);
+        // Request for 2 seats when only 1 left
+        manager.requestSeatBooking(2);
+        assertEquals(expectedList.toString(), manager.viewAllocatedSeats().toString());
+    }
 }

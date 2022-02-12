@@ -28,7 +28,7 @@ public class BookingSystem {
                 seatCounter--;
                 counterC1++;
             } else {
-                System.out.println("Could not book all seats, only " + i + "seats booked");
+                System.out.println("Could not book all seats, only " + i + " seat(s) booked");
             }
         }
     }
