@@ -22,4 +22,8 @@ public class BookingManager {
     public ArrayList viewAllocatedSeats() {
         return system.getAllocatedSeats();
     }
+
+    public StringBuilder getCurrentBooking() {
+        return system.getCurrentBooking();
+    }
 }
